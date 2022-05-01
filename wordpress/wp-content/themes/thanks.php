@@ -1,0 +1,51 @@
+<?php 
+
+  // Template Name: Thanks
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/thanks.css">
+  <title>Document</title>
+
+  	<?php 
+	
+	wp_head();
+	
+	?>
+</head>
+<body>
+  <section class="thanks" id="thanks">
+    <div class="thanks__header header">
+      <div class="header__container container">
+        <div class="header__left">
+          <img class="thanks__logo header__logo" src="img/Logo.svg" alt="Логотип">
+        </div>
+        <div class="header__right">
+          <div class="header__phone">+7 926 330-68-34</div>
+          <a class="header__link a" href="tel:+74951234567">Срочный вопрос</a>
+        </div>
+      </div>
+    </div>
+    <div class="thanks__bottom">
+      <h2 class="thanks__h2 h2">Спасибо за обращение</h2>
+      <h3 class="thanks__h3 h3">наш специалист свяжется с вами в ближайшее время</h3>
+      <a class="thanks__btn btn a" href="index.html">Вернуться на сайт</a>
+    </div>
+  </section>
+
+  <?php 
+	
+	wp_footer();
+	
+	?>
+</body>
+</html>

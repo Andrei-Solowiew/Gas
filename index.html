@@ -1,0 +1,574 @@
+<?php
+/**
+ * The header for our theme
+ *
+ * This is the template that displays all of the <head> section and everything up until <div id="content">
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ *
+ * @package gas
+ */
+
+?>
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/normalize.css">
+  <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/style.css">
+  <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/header.css">
+  <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/hero.css">
+  <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/price.css">
+  <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/thanks.css">
+  <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/advantages.css">
+  <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/volume.css">
+  <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/reviews.css">
+  <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/answers.css">
+  <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/questions.css">
+  <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/location.css">
+  <title>Атлант - доставка газа</title>
+</head>
+
+<body>
+
+  <header class="header">
+    <div class="header__container container">
+      <div class="header__left">
+        <img class="header__logo" src="<?php the_field('header__logo'); ?>" alt="Логотип">
+        <p class="header__text p">
+          <?php the_field('header__text'); ?>
+        </p>
+      </div>
+      <div class="header__right">
+        <div class="header__phone">
+          <?php the_field('header__phone'); ?>
+        </div>
+        <a class="header__link a" href="tel:+<?php the_field('header__link'); ?>">
+          <?php the_field('header__link-text'); ?>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <?php
+  /**
+   * The template for displaying all pages
+   *
+   * This is the template that displays all pages by default.
+   * Please note that this is the WordPress construct of pages
+   * and that other 'pages' on your WordPress site may use a
+   * different template.
+   *
+   * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+   *
+   * @package gas
+   */
+  
+  get_header();
+  ?>
+  
+  <section class="hero" style="background-image: url(<?php the_field('hero__bg'); ?>">
+    <div class="container">
+      <div class="hero__top">
+        <div class="hero__left">
+          <div class="hero__icons_left">
+            <style>
+              .hero__icons_left::before {
+                background-image: url(<?php the_field('hero__icons-left_before');
+                ?>);
+              }
+            </style>
+            <span style="background: url(<?php the_field('hero__icons-arrow'); ?>"></span>
+            <style>
+              .hero__icons_left::after {
+                background-image: url(<?php the_field('hero__icons-left_after');
+                ?>);
+              }
+            </style>
+          </div>
+          <div class="hero__top-p p">
+            <?php the_field('hero__top-p'); ?>
+          </div>
+        </div>
+        <div class="hero__right">
+          <div class="hero__icons_right">
+            <style>
+              .hero__icons_right::before {
+                background-image: url(<?php the_field('hero__icons-right_before');
+                ?>);
+              }
+            </style>
+            <span></span>
+            <style>
+              .hero__icons_right::after {
+                background-image: url(<?php the_field('hero__icons-right_after');
+                ?>);
+              }
+            </style>
+          </div>
+          <div class="hero__top-p p">
+            <?php the_field('hero__top-p_two'); ?>
+          </div>
+        </div>
+      </div>
+      <h2 class="hero__h2 h2">
+        <?php the_field('hero__h2'); ?>
+      </h2>
+      <h3 class="hero__h3 h3">
+        <?php the_field('hero__h3'); ?>
+      </h3>
+      <style>
+        .hero__h3::after {
+          background-image: url(<?php the_field('hero__h3::after');
+          ?>);
+        }
+      </style>
+      <a class="hero__btn a btn " href="#popup">
+        <?php the_field('hero__btn'); ?>
+      </a>
+      <p class="hero__p p">
+        <?php the_field('hero__p'); ?>
+      </p>
+    </div>
+  
+    <div class="hero__popup" id="popup">
+      <a class="hero__popup-area a" href="#"></a>
+      <div class="hero__popup-body">
+        <div class="hero__popup-content">
+          <h3 class="hero__popup-h3 h3">
+            <?php the_field('hero__popup-h3'); ?>
+          </h3>
+          <a class="hero__popup-close a" href="#"><img src="<?php the_field('hero__popup-close'); ?>" alt="закрыть"></a>
+          <form class="hero__popup-form" action="">
+            <input class="hero__popup-input input" type="text" placeholder="<?php the_field('hero__popup-name'); ?>">
+            <input class="hero__popup-input input" type="tel" placeholder="<?php the_field('hero__popup-phone'); ?>">
+            <a class="hero__popup-btn btn a" href="thanks/">
+              <?php the_field('hero__popup-btn'); ?>
+            </a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="price">
+    <div class="container">
+      <h2 class="price__h2 h2">
+        <?php the_field('price__h2'); ?>
+      </h2>
+      <div class="price__content">
+        <div class="price__content-left">
+  
+  
+          <?php
+  $price__left = get_field('price__left');
+  if( $price__left ): ?>
+          <div id="price__left">
+            <h2 class="price__content-h2 h2">
+              <?php echo $price__left['price__content-h2']; ?>
+            </h2>
+            <h3 class="price__h3 h3">
+              <?php echo $price__left['price__content-price']; ?>
+            </h3>
+            <p class="price__p p">
+              <?php echo $price__left['price__p']; ?>
+            </p>
+            <button class="price__btn btn">
+              <?php echo $price__left['price__btn']; ?>
+            </button>
+          </div>
+          <?php endif; ?>
+  
+  
+        </div>
+        <div class="price__content-center">
+  
+  
+  
+          <?php
+  $price__center = get_field('price__center');
+  if( $price__center ): ?>
+          <div id="price__center">
+            <h3 class="price__h4 h4">
+              <?php echo $price__center['price__h4']; ?>
+            </h3>
+            <div class="price__ratio">
+              <div class="price__ratio-left">
+                <h2 class="price__content-h2_center h2">
+                  <?php echo $price__center['price__percent_left']; ?>
+                </h2>
+                <h4 class="price__ratio-h4 h4">
+                  <?php echo $price__center['price__substance_left']; ?>
+                </h4>
+              </div>
+              <div class="price__ratio-right">
+                <h2 class="price__content-h2_center h2">
+                  <?php echo $price__center['price__percent_right']; ?>
+                </h2>
+                <h4 class="price__ratio-h4 h4">
+                  <?php echo $price__center['price__substance_right']; ?>
+                </h4>
+              </div>
+            </div>
+            <img class="price__img" src="<?php echo esc_url( $price__center['price__img']); ?>" alt="Цистерна">
+          </div>
+          <?php endif; ?>
+  
+  
+  
+  
+  
+        </div>
+        <div class="price__content-right">
+          <?php
+  $price__right = get_field('price__right');
+  if( $price__right ): ?>
+          <div id="price__right">
+            <h2 class="price__content-h2 h2">
+              <?php echo $price__right['price__content-h2']; ?>
+            </h2>
+            <h3 class="price__h3 h3">
+              <?php echo $price__right['price__content-price']; ?>
+            </h3>
+            <p class="price__p p">
+              <?php echo $price__right['price__p']; ?>
+            </p>
+            <button class="price__btn btn">
+              <?php echo $price__right['price__btn']; ?>
+            </button>
+          </div>
+          <?php endif; ?>
+        </div>
+      </div>
+  
+      <div class="price__arrows">
+        <img class="price__arrow" src="<?php the_field('price__arrow_one'); ?>" alt="стрелка">
+        <img class="price__arrow" src="<?php the_field('price__arrow_two'); ?>" alt="стрелка">
+        <img class="price__arrow" src="<?php the_field('price__arrow_three'); ?>" alt="стрелка">
+      </div>
+    </div>
+  </section>
+  
+  <section class="advantages">
+    <div class="container">
+      <h2 class="advantages__h2 h2">
+        <?php the_field('advantages__h2'); ?>
+      </h2>
+      <ul class="advantages__grid ul">
+  
+        <?php if( have_rows('advantages__item') ):
+      while( have_rows('advantages__item') ) : the_row();?>
+        <li class="advantages__item" style="background-image: url(<?php the_sub_field('advantages__item-bg'); ?>">
+          <h3 class="advantages__h3 h3">
+            <?php the_sub_field('advantages__h3'); ?>
+          </h3>
+          <p class="advantages__p p">
+            <?php the_sub_field('advantages__p'); ?>
+          </p>
+        </li>
+        <?php endwhile; endif;?>
+      </ul>
+  
+      <div class="advantsges__bottom" style="background-image: url(<?php the_field('advantages__bottom-bg'); ?>)">
+        <h2 class="advantages__bottom-h2 h2">
+          <?php the_field('advantages__bottom-h2'); ?>
+  
+        </h2>
+        <p class="advantages__bottom-p p">
+          <?php the_field('advantages__bottom-p'); ?>
+  
+        </p>
+      </div>
+    </div>
+  </section>
+  
+  <section class="volume">
+    <div class="volume__container container">
+      <h2 class="volume__h2 h2">
+        <?php the_field('volume__h2'); ?>
+      </h2>
+      <div class="volume__content">
+        <ul class="volume__list ul">
+          <li class="volume__item">
+            <button class="volume__btn volume__btn_active btn" data-path="one">
+              <?php the_field('volume__btn_one'); ?>
+            </button>
+          </li>
+          <li class="volume__item">
+            <button class="volume__btn btn" data-path="two">
+              <?php the_field('volume__btn_two'); ?>
+            </button>
+          </li>
+          <li class="volume__item">
+            <button class="volume__btn btn" data-path="three">
+              <?php the_field('volume__btn_three'); ?>
+            </button>
+          </li>
+          <li class="volume__item">
+            <button class="volume__btn btn" data-path="four">
+              <?php the_field('volume__btn_four'); ?>
+            </button>
+          </li>
+        </ul>
+  
+        <img class="volume__img volume__img_active" src="<?php the_field('volume_img_one'); ?>" alt="Малый 2000 л."
+          data-target="one">
+        <img class="volume__img" src="<?php the_field('volume_img_two'); ?>" alt="Средний 6000 л." data-target="two">
+        <img class="volume__img" src="<?php the_field('volume_img_three'); ?>" alt="Стандартный 10 000 л"
+          data-target="three">
+        <img class="volume__img" src="<?php the_field('volume_img_four'); ?>" alt="Оптовый 40 000 л." data-target="four">
+  
+        <a class="volume__link btn a" href="#popup">
+          <?php the_field('volume__link'); ?>
+        </a>
+      </div>
+    </div>
+  </section>
+  
+  <section class="reviews">
+    <div class="reviews__container container swiper">
+      <h2 class="reviews__h2 h2">
+        <?php the_field('reviews__h2'); ?>
+      </h2>
+      <!-- Additional required wrapper -->
+      <div class="reviews__wrapper swiper-wrapper">
+        <!-- Slides -->
+  
+  
+  
+        <?php if( have_rows('reviews__slide') ):
+      while( have_rows('reviews__slide') ) : the_row();?>
+        <div class="reviews__slide swiper-slide">
+          <div class="reviews__content">
+            <img class="reviews__img" src="<?php the_sub_field('reviews__img'); ?>" alt="Ольга И.">
+            <div class="reviews__text">
+              <h3 class="reviews__h3 h3">
+                <?php the_sub_field('reviews__h3'); ?>
+              </h3>
+              <div class="reviews__sity">
+                <?php the_sub_field('reviews__city'); ?>
+              </div>
+              <p class="reviews__p p">
+                <?php the_sub_field('reviews__p'); ?>
+              </p>
+            </div>
+          </div>
+        </div>
+        <?php endwhile; endif;?>
+        <style>
+          .reviews__button_prev:after {
+            background-image: url(<?php the_field('reviews__button_prev');
+            ?>);
+          }
+  
+          .reviews__button_next:after {
+            background-image: url(<?php the_field('reviews__button_next');
+            ?>);
+          }
+        </style>
+      </div>
+      <!-- If we need pagination -->
+      <div class="reviews__pagination swiper-pagination"></div>
+      <!-- If we need navigation buttons -->
+      <div class="reviews__button_prev swiper-button-prev"></div>
+      <div class="reviews__button_next swiper-button-next"></div>
+    </div>
+  </section>
+  
+  
+  
+  
+  <section class="answers">
+    <div class="answers__container container">
+      <h2 class="answers__h2 h2">
+        <?php the_field('answers__h2'); ?>
+      </h2>
+      <ul class="answers__list ul">
+        <?php if( have_rows('answers__item') ):
+      while( have_rows('answers__item') ) : the_row();?>
+        <li class="answers__item">
+          <h3 class="answers__h3 h3">
+            <?php the_sub_field('answers__h3'); ?>
+          </h3>
+          <div class="answers__content">
+            <?php the_sub_field('answers__content'); ?>
+          </div>
+        </li>
+        <?php endwhile; endif;?>
+      </ul>
+    </div>
+  </section>
+  
+  <section class="questions">
+    <div class="questions__container container">
+      <div class="questions__top">
+        <div class="questions__left">
+          <h2 class="questions__h2 h2">
+            <?php the_field('questions__h2'); ?>
+          </h2>
+          <form class="questions__form" action="">
+            <input class="questions__input input" type="text" name="name"
+              placeholder="<?php the_field('questions__input_name'); ?>">
+            <input class="questions__input input" type="tel" name="tel"
+              placeholder="<?php the_field('questions__input_phone'); ?>">
+            <textarea class="questions__textarea textarea" name="textarea"
+              placeholder="<?php the_field('questions__input_question'); ?>"></textarea>
+            <button class="questions__btn btn" type="submit">
+              <?php the_field('questions__button'); ?>
+            </button>
+          </form>
+        </div>
+        <div class="questions__right">
+          <img class="questions__img" src="<?php the_field('questions__img'); ?>" alt="">
+          <div class="questions__name">
+            <h3 class="questions__h3 h3">
+              <?php the_field('questions__name'); ?>
+            </h3>
+            <h4 class="questions__h4 h4">
+              <?php the_field('questions__post'); ?>
+            </h4>
+          </div>
+        </div>
+      </div>
+      <ul class="questions__list ul">
+  
+        <?php if( have_rows('questions__item') ):
+      while( have_rows('questions__item') ) : the_row();?>
+        <li class="questions__item questions__item_rosneft" style="background-image: url(<?php the_sub_field('questions__img');?>);
+  	background-position: center <?php the_sub_field('questions__position');?>px"></li>
+        <?php endwhile; endif;?>
+      </ul>
+    </div>
+  </section>
+  
+  <section class="location">
+    <div class="location__container container">
+      <h2 class="location__h2 h2">
+        <?php the_field('location__h2'); ?>
+      </h2>
+      <a class="location__btn btn a" href="#popup">
+        <?php the_field('location__btn'); ?>
+      </a>
+      <div class="location__content">
+        <div class="location__text">
+          <h3 class="location__h3 h3">
+            <?php the_field('location__h3'); ?>
+          </h3>
+          <p class="location__main-p p">
+            <?php the_field('location__main-p'); ?>
+          </p>
+          <h4 class="location__h4 h4">
+            <?php the_field('location__h4_one'); ?>
+          </h4>
+          <p class="location__p p">
+            <?php the_field('location__p_one'); ?>
+          </p>
+          <h4 class="location__h4 h4">
+            <?php the_field('location__h4_two'); ?>:
+          </h4>
+          <p class="location__p p">
+            <?php the_field('location__p_two'); ?>
+          </p>
+        </div>
+        <!-- <img class="location__map" src="img/map.png" alt="карта"> -->
+        <div id="map1" style="width: 60%; height: 480px"></div>
+      </div>
+      <div class="location__article">
+        <a class="location__link a" href="<?php the_field('location__href_one'); ?>">
+          <?php the_field('location__link_one'); ?>
+        </a>
+        <a class="location__link a" href="<?php the_field('location__link_one'); ?>">
+          <?php the_field('location__link_two'); ?>
+        </a>
+      </div>
+    </div>
+  </section>
+  
+  <?php
+  get_footer();
+
+
+<?php
+/**
+ * The template for displaying the footer
+ *
+ * Contains the closing of the #content div and all content after.
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ *
+ * @package gas
+ */
+
+?>
+<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/js/popup.js"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/js/volume.js"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/js/reviews__swiper.js"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/js/button__to__bottom.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/js/accordion.js"></script>
+<script src="https://api-maps.yandex.ru/2.1/?apikey=ваш API-ключ&lang=ru_RU" type="text/javascript">
+</script>
+<script>
+  // Функция ymaps.ready() будет вызвана, когда
+  // загрузятся все компоненты API, а также когда будет готово DOM-дерево.
+  ymaps.ready(init);
+  function init() {
+    var geolocationControl = new ymaps.control.GeolocationControl({
+      options: {
+        float: "none",
+        position: {
+          top: "350px",
+          right: "10px",
+        },
+      },
+    });
+    var zoomControl = new ymaps.control.ZoomControl({
+      options: {
+        float: "none",
+        position: {
+          top: "268px",
+          right: "10px",
+        },
+        size: "small",
+      },
+    });
+
+    // Создание карты.
+    var myMap = new ymaps.Map("map1", {
+      center: [55.76026356869772, 37.61446894503018],
+      zoom: 17,
+      controls: [zoomControl, geolocationControl],
+    });
+
+    // Создание геообъекта с типом точка (метка).
+    var myGeoObject = new ymaps.GeoObject({
+      geometry: {
+        type: "Point", // тип геометрии - точка
+        coordinates: [48.872185, 2.354224], // координаты точки
+      },
+    });
+
+    var myPlacemark = new ymaps.Placemark(
+      [55.76026356869772, 37.61446894503018],
+      {},
+      {
+        iconLayout: "default#image",
+        iconImageHref: "<?php the_field('location__img'); ?>",
+        iconImageSize: [30, 42],
+        iconImageOffset: [-3, -42],
+      }
+    );
+
+    // Размещение геообъекта на карте.
+    myMap.geoObjects.add(myGeoObject);
+    myMap.geoObjects.add(myPlacemark);
+  }</script>
+</body>
+
+</html>
